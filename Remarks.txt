@@ -1,0 +1,21 @@
+#Mac or Linux 系统 发送邮件的环境变量配置
+export MAIL_USERNAME="286577399@qq.com"
+export MAIL_PASSWORD='gauzzidnyumqbjfd'
+
+#数据库迁移更新提交
+python3 manager.py db init
+python3 manager.py db migrate -m "first init db"
+python3 manager.py db upgrade
+
+#创建用户角色
+python3 manager.py shell
+In [1]: from manager import Role
+In [2]: Role.insert_roles()
+In [3]: Role.query.all()
+
+#Flask-SQLAlchemy的 MySQL 数据库链接[因为这个坑了3小时，不亏]
+py2格式:
+    mysql://username:passwd@localhost:port/db
+    
+py3格式:
+    mysql+pymysql://username:passwd@localhost:port/db?charset=utf8
