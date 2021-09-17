@@ -152,9 +152,11 @@ Docker version 20.10.8, build 3967b7d
 ```bash
 apt-get update && apt-get install -y apt-transport-https
 curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - 
+
 cat << EOF >/etc/apt/sources.list.d/kubernetes.list
 deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main
-EOF  
+EOF
+
 apt-get update
 apt-get install -y kubelet kubeadm kubectl
 
